@@ -14,7 +14,7 @@ function verifyToken(req, res, next) {
 }
 
 function verifyAgentRole(req, res, next) {
-    let usuario = req.usuario;
+    let usuario = req.user;
     if (usuario.role !== 'AGENT_ROLE') return res.status(400).json({ ok: true, message: 'Agent permissions denied' });
     console.log('Correcto!');
     next();
