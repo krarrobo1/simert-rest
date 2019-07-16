@@ -2,7 +2,7 @@ const JWT = require('jsonwebtoken');
 
 function verifyToken(req, res, next) {
     let token = req.get('Authorization');
-    JWT.verify(token, 'dev-secret-seed', (err, decoded) => {
+    JWT.verify(token, process.env.SEED, (err, decoded) => {
         if (err) return res.status(401).json({ ok: false, err: { message: 'Token no valido' } });
         // Si coincide escribe una propiedad usuario en el request
         // decoded (payload del token)

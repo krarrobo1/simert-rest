@@ -11,7 +11,7 @@ login.post('/login', (req, res) => {
         if (err) return res.status(500).json({ ok: false, err });
         if (!userDB) return res.status(400).json({ ok: false, err: { message: '403. Email* or Password Incorrect' } });
         if (!validatePassword(body.password, userDB.password)) return res.status('403. Email or Password* Incorrect');
-        let token = JWT.sign({ user: userDB }, 'dev-secret-seed', { expiresIn: '48h' });
+        let token = JWT.sign({ user: userDB }, process.env.SEED, { expiresIn: '48h' });
         res.status(200).json({ ok: true, user: userDB, token });
     });
 });

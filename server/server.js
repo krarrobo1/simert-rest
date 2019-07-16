@@ -17,7 +17,7 @@ app.use(router);
 
 
 mongoose.set('useCreateIndex', true)
-mongoose.connect(process.env.MONGOURI, { useNewUrlParser: true }, (err) => { if (err) console.log(err) });
+mongoose.connect(process.env.URLDB, { useNewUrlParser: true }, (err) => { if (err) console.log(err) });
 
 app.listen(process.env.PORT, () => {
     console.log('Listening on port 3000');
